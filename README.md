@@ -12,7 +12,6 @@ This corpus has been collected from free or free for research sources at the Int
 2. A subset of 3,375 SMS randomly chosen ham messages of the NUS SMS Corpus (NSC), which is a dataset of about 10,000 legitimate messages collected for research at the Department of Computer Science at the National University of Singapore.
 3. A list of 450 SMS ham messages collected from Caroline Tag's PhD Thesis.
 4. Finally, we have incorporated the SMS Spam Corpus v.0.1 Big. It has 1,002 SMS ham messages and 322 spam messages.
-5. In my repository, I have included this csv file.
 
 ## Spam detector model
 1. Importing dataset: I have used pandas library to import the dataset and renamed the columns v1 and v2 with label and message respectivelly.
