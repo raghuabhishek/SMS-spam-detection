@@ -12,7 +12,7 @@ import re
 from sklearn.feature_extraction.text import CountVectorizer
 from nltk.corpus import stopwords
 import pandas as pd
-import pickle
+
 
 
 #Importing dataset 
@@ -52,8 +52,6 @@ X_train,X_test,y_train,y_test= train_test_split(X,y,test_size=0.20,random_state=
 from sklearn.naive_bayes import MultinomialNB
 spam_detector=MultinomialNB().fit(X_train,y_train)
 
-filename = 'finalized_model.pkl'
-pickle.dump(spam_detector, open(filename, 'wb'))
 
 y_pred=spam_detector.predict(X_test)
 
