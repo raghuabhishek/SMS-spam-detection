@@ -15,24 +15,17 @@ This corpus has been collected from free or free for research sources at the Int
 
 ## Preprocessing data
 1. **Importing dataset**: I have used `pd.read_csv()` method to import the dataset. While reading the data, I have used **latin-1** which uses the characters 0 through 127, so it can encode half as many characters as **latin-1**. I have renamed the columns of the dataframe from **v1** and **v2** to **label** and **message** respectivelly.
-2. **Removing punctuations**: I have used regular expressions library **(re)** to remove the **punctuations** using the function re.sub() which substitutes all the characters other than alphabets to whitespaces. 
-3. **Removing stopwords**: The stopwords like "is","the","or" etc which doesnt have any significance should be removed from the message and we used stopwords module from nltk to acheive this. `from nltk.corpus import stopwords`
-4. **Stemming**: Stemming is a process of reducing the word to its root stem or removing the affixes. I have used **PorterStemmer** in my code to acheive stemming. `from nltk.stem import PorterStemmer`
+2. **Removing punctuations**: I have used regular expressions library **(re)** to remove the **punctuations** using the function `re.sub('[^a-zA-Z]',' ',dataset['message'][i])` which substitutes all the characters other than alphabets to whitespaces. 
+3. **Removing stopwords**: The stopwords like "is","the","or" etc which doesnt have any significance should be removed from the message and we used stopwords module from nltk to acheive this. `stopwords.words('english')`
+4. **Stemming**: Stemming is a process of reducing the word to its root stem or removing the affixes. I have used **PorterStemmer** in my code to acheive stemming. `PorterStemmer.stem(word)`
 5. **Vectoriztion**: Vectorization is a process of generating numerical vectors/arary from textual data. I have implemented **Bag of Words(BoW)** technique which counts the number of occurances of the word in a message. To implement this, I have leveraged **CountVectorizer** class to acheive this.
-`from sklearn.feature_extraction.text import CountVectorizer`
+`X=CountVectorizer.fit_transform(corpus).toarray()`
 6. **Splitting dataset**: The dataset is then divided into training and testing data in the ratio 80:20. 
-`from sklearn.model_selection import train_test_split`
+`X_train,X_test,y_train,y_test= train_test_split(X,y,test_size=0.20,random_state=0)`
 
 ## Spam detection model
-1. **Generate model**: The **Naive bayes classifier** uses **Bayes Theorem** which is based on conditionl probability is used to generate a model for the spam dataset. \Pr(S|W)={\frac  {\Pr(W|S)\cdot \Pr(S)}{\Pr(W|S)\cdot \Pr(S)+\Pr(W|H)\cdot \Pr(H)}}
-where:
-
-{\displaystyle \Pr(S|W)}\Pr(S|W) is the probability that a message is a spam, knowing that the word "replica" is in it;
-{\displaystyle \Pr(S)}\Pr(S) is the overall probability that any given message is spam;
-{\displaystyle \Pr(W|S)}\Pr(W|S) is the probability that the word "replica" appears in spam messages;
-{\displaystyle \Pr(H)}\Pr(H) is the overall probability that any given message is not spam (is "ham");
-{\displaystyle \Pr(W|H)}\Pr(W|H) is the probability that the word "replica" appears in ham messages. I have used sklearn library for implementing Naive Bayes classifier. `from sklearn.naive_bayes import MultinomialNB`
-2. **Testing the model and measuring the performance**: The model which I have generated gave me an accuracy of 98%.
-
+1. **Generate model**: The **Naive bayes classifier** uses **Bayes Theorem** which is based on conditionl probability is used to generate a model for the spam dataset. I have used **sklearn** library for implementing Naive Bayes classifier. `spam_detector=MultinomialNB().fit(X_train,y_train)`
+2. **Testing the model**: I have used predict() function to test the model `y_pred=spam_detector.predict(X_test)`. 
+3. **Measuring the performance**: I have used confusion matrix and accuracy to determine the performance of the ML model. `cm=confusion_matrix(y_test,y_pred)` `accuracy=accuracy_score(y_test, y_pred)`.
 
 
