@@ -38,7 +38,7 @@ for i in range(len(dataset)):
     result=" ".join(result)
     corpus.append(result)
 
-print(corpus)
+#Vectoriztion
 from sklearn.feature_extraction.text import CountVectorizer
 cv=CountVectorizer()
 X=cv.fit_transform(corpus).toarray()
@@ -46,15 +46,18 @@ X=cv.fit_transform(corpus).toarray()
 y=pd.get_dummies(dataset['label'])
 y=y.iloc[:,-1].values    
 
+#Splitting of dataset into train and test data
 from sklearn.model_selection import train_test_split
 X_train,X_test,y_train,y_test= train_test_split(X,y,test_size=0.20,random_state=0)
 
+#Generating a machine learning model
 from sklearn.naive_bayes import MultinomialNB
 spam_detector=MultinomialNB().fit(X_train,y_train)
 
-
+#Testing the model
 y_pred=spam_detector.predict(X_test)
 
+#Metrics to test the performance of the model
 from sklearn.metrics import confusion_matrix
 cm=confusion_matrix(y_test,y_pred)
 
