@@ -12,7 +12,15 @@ This corpus has been collected from free or free for research sources at the Int
 2. A subset of 3,375 SMS randomly chosen ham messages of the NUS SMS Corpus (NSC), which is a dataset of about 10,000 legitimate messages collected for research at the Department of Computer Science at the National University of Singapore.
 3. A list of 450 SMS ham messages collected from Caroline Tag's PhD Thesis.
 4. Finally, we have incorporated the SMS Spam Corpus v.0.1 Big. It has 1,002 SMS ham messages and 322 spam messages.
+5. In my repository, I have included this csv file.
 
+## Spam detector model
+1. Importing dataset: I have used pandas library to import the dataset and renamed the columns v1 and v2 with label and message respectivelly.
+2. Cleaning data and preprocessing: Removing punctuations, stopwords and perform stemming.
+3. Vectoriztion: Bag of Words(BoW) is a technique implemented for generating vectors from textual data.
+4. Splitting dataset: The dataset is then divided into training and testing data in the ratio 80:20.
+5. Generate model: The naive bayes classifier works best with the spam classification since it works on conditional probability.
+6. Testing the model and measuring the performance: The model which I have generated gave me an accuracy of 98%.
 
 
 
