@@ -33,6 +33,9 @@ This corpus has been collected from free or free for research sources at the Int
 `X_train,X_test,y_train,y_test= train_test_split(X,y,test_size=0.20,random_state=0)`
 
 ## Spam detection model
+
+![Naive-Bayes img](https://miro.medium.com/max/1200/1*39U1Ln3tSdFqsfQy6ndxOA.png)
+
 1. **Generate model**: The **Naive bayes classifier** uses **Bayes Theorem** which is based on conditionl probability is used to generate a model for the spam dataset. I have used **sklearn** library for implementing Naive Bayes classifier. `spam_detector=MultinomialNB().fit(X_train,y_train)`
 2. **Testing the model**: I have used predict() function to test the model `y_pred=spam_detector.predict(X_test)`. 
 3. **Measuring the performance**: I have used confusion matrix and accuracy to determine the performance of the ML model. `cm=confusion_matrix(y_test,y_pred)` `accuracy=accuracy_score(y_test, y_pred)`.
