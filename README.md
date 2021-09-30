@@ -15,7 +15,8 @@ This corpus has been collected from free or free for research sources at the Int
 
 ## Preprocessing data
 1. **Importing dataset**: I have used `pd.read_csv()` method to import the dataset. While reading the data, I have used **latin-1** which uses the characters 0 through 127, so it can encode half as many characters as **latin-1**. I have renamed the columns of the dataframe from **v1** and **v2** to **label** and **message** respectivelly.
-2. **Removing punctuations**: I have used regular expressions library **(re)** to remove the **punctuations** using the function `re.sub('[^a-zA-Z]',' ',dataset['message'][i])` which substitutes all the characters other than alphabets to whitespaces. 
+2. **Removing punctuations**: I have used regular expressions library **(re)** to remove the **punctuations** using the function 
+`re.sub('[^a-zA-Z]',' ',dataset['message'][i])` which substitutes all the characters other than alphabets to whitespaces. 
 3. **Removing stopwords**: The stopwords like "is","the","or" etc which doesnt have any significance should be removed from the message and we used stopwords module from nltk to acheive this. `stopwords.words('english')`
 4. **Stemming**: Stemming is a process of reducing the word to its root stem or removing the affixes. I have used **PorterStemmer** in my code to acheive stemming. `PorterStemmer.stem(word)`
 5. **Vectoriztion**: Vectorization is a process of generating numerical vectors/arary from textual data. I have implemented **Bag of Words(BoW)** technique which counts the number of occurances of the word in a message. To implement this, I have leveraged **CountVectorizer** class to acheive this.
