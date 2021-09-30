@@ -25,7 +25,7 @@ dataset=dataset.rename(columns={'v1':'label','v2':'message'})
 
 ps=PorterStemmer()
 
-#Remove punctuations and stopwords
+#Remove punctuations, stopwords and performing stemming
 corpus=[]
 for i in range(len(dataset)):
     review=re.sub('[^a-zA-Z]',' ',dataset['message'][i])
